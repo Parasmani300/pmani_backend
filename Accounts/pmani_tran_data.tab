@@ -1,0 +1,21 @@
+Create Table Tran_data(
+    sku number(8,0) not null,
+     Dept number(10,0) NOT NULL ENABLE,
+    Class NUMBER(4,0) NOT NULL ENABLE,
+    Subclass NUMBER(4,0) NOT NULL ENABLE,
+    Subclass_Name VARCHAR2(30) NOT NULL ENABLE,
+    Store Number(4,0),
+    Unit_cost Number(20,4),
+    Unit_retail Number(20,4),
+    total_cost Number(20,4),
+    total_retail Number(20,4),
+    total_qty Number(20,4),
+    tran_date Date,
+    tran_code VARCHAR2(10),
+    tran_desc VARCHAR2(30),
+    sales_type VARCHAR2(10),
+    user_id VARCHAR2(255),
+    CONSTRAINT "FK_sku_store_tran_data" FOREIGN KEY (sku,store) REFERENCES Product_Store(sku,store),
+    CONSTRAINT "FK_dept_class_subclass" FOREIGN KEY (Dept,Class,SUbclass) REFERENCES Subclass(Dept,Class,SUbclass)
+)
+/

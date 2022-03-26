@@ -1,0 +1,10 @@
+Create Table pm_sub_attr(
+    Dept number(4,0) not null ENABLE,
+    Class number(4,0) not null ENABLE,
+    Subclass number(4,0) not null ENABLE,
+    Subclass_type VARCHAR2(10) not null ENABLE,
+    BUYER NUMBER(4,0) not null ENABLE,
+    CONSTRAINT pm_sub_attr_pk PRIMARY KEY (Dept,Class,Subclass) ENABLE NOVALIDATE,
+    CONSTRAINT "FK_SUB_ATTR_BUYER" FOREIGN KEY (DEPT,CLASS,SUBCLASS) REFERENCES SUBCLASS(BUYER)
+)
+/

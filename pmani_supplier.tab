@@ -1,0 +1,25 @@
+Create Table Supplier(
+    Supplier Number(10,0),
+    SupplierName varchar2(50),
+    COntact_name varchar2(50),
+    Address varchar2(50),
+    COntact_phone varchar2(50),
+    Supplier_Status varchar2(50),
+    Lang varchar2(50),
+    Email varchar2(255),
+    Fax varchar2(50),
+    Website varchar2(255),
+    CONSTRAINT "PK_Supplier" Primary Key(Supplier)   
+)
+/
+Create Table Product_Supplier(
+    Sku Number(10,0),
+    Supplier Number(10,0),
+    Primary_supplier_ind varchar2(50),
+    RTV_Ind varchar2(50),
+    Last_updated Date,
+    CONSTRAINT "FK_Supplier" Foreign Key(Supplier) References Supplier(Supplier),
+    CONSTRAINT "FK_Sku" Foreign Key(Sku) References Product(Sku),
+    CONSTRAINT "PK_Product_Supplier" Primary Key(Sku,Supplier)
+)
+/

@@ -1,0 +1,16 @@
+Create Table Inv_status_type(
+    inv_status number(4,0) not null,
+    inv_status_description varchar2(50) not null,
+    CONSTRAINT inv_status_type_pk PRIMARY KEY (inv_status)
+)
+/
+Create Table Inv_status_qty(
+    inv_status number(4,0) not null,
+    location number(4,0) not null,
+    sku number(8,0) not null,
+    qty number(10,0) not null,
+    CONSTRAINT inv_status_qty_pk PRIMARY KEY (inv_status),
+    CONSTRAINT "FK_STORE_SKU_INV_ST_QTY" FOREIGN KEY (location,sku) REFERENCES Product_Store(Store,sku),
+    CONSTRAINT "FK_INV_STAUS" FOREIGN KEY (inv_status) REFERENCES Inv_status_type(inv_status)
+)
+/

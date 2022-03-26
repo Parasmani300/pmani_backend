@@ -1,0 +1,64 @@
+Create Table Store(
+    Store Number(4,0),
+    Store_name varchar(20),
+    Store_address varchar(20),
+    Store_phone varchar(20),
+    Store_email varchar(20),
+    City varchar(20),
+    District varchar(20),
+    State varchar(20),
+    Zip varchar(20),
+    Country varchar(20),
+    Last_updated_date Date,
+    CONSTRAINT pk_store PRIMARY KEY(Store)
+)
+/
+Create Table Store_Attributes(
+    Store Number(4,0),
+    LOC_STATUS varchar(20),
+    monday_open_time varchar(20),
+    monday_close_time varchar(20),
+    tuesday_open_time varchar(20),
+    tuesday_close_time varchar(20),
+    wednesday_open_time varchar(20),
+    wednesday_close_time varchar(20),
+    thursday_open_time varchar(20),
+    thursday_close_time varchar(20),
+    friday_open_time varchar(20),
+    friday_close_time varchar(20),
+    saturday_open_time varchar(20),
+    saturday_close_time varchar(20),
+    sunday_open_time varchar(20),
+    sunday_close_time varchar(20),
+    Store_google_map_link varchar(255),
+    home_delivery_indicator varchar(20),
+    curbside_delivery_indicator varchar(20),
+    CONSTRAINT "FK_Store_attr" Foreign Key(Store) references Store(Store),
+    CONSTRAINT pk_store_attributes PRIMARY KEY(Store)
+)
+/
+Create Table Product_Store(
+    SKu Number(4,0),
+    Store Number(4,0),
+    Primary_Supplier Number(4,0),
+    Unit_retail Number(20,4),
+    Stock_on_hand Number(12,4),
+    In_transit_qty Number(12,4),
+    tsf_reserved_qty Number(12,4),
+    tsf_expected_qty Number(12,4),
+    rtv_qty Number(12,4),
+    non_sellable_qty Number(12,4),
+    clear_ind varchar2(1),
+    Taxable_ind varchar2(1),
+    Status varchar2(1),
+    status_update_date Date,
+    last_sales_export_date Date,
+    repair_service_ind varchar2(1),
+    CONSTRAINT "FK_SKU" FOREIGN KEY(SKu) REFERENCES Products(SKu),
+    CONSTRAINT pk_product_store PRIMARY KEY(SKu,Store)
+)
+/
+Alter Table Product_Store ADD (UNIT_COST NUMBER(20,4) NOT NULL)
+/
+Alter Table Product_Store ADD CONSTRAINT "FK_STORE" FOREIGN KEY(Store) REFERENCES Store(Store)
+/
